@@ -22,7 +22,7 @@ describe('Отображение товаров на странице катал
    const cart = new CartApi();
 
    let store: StoreType | null = null;
-   let app: JSX.Element | null = null
+   let app: JSX.Element | null = null;
 
    const mockGoods: ProductShortInfo[] = [
       generateShortProduct(),

@@ -95,7 +95,7 @@ export const Cart: React.FC = () => {
     const orderInfo = cartIsEmpty && latestOrderId ? (
         <div className="row my-2">
             <div className="col-12 col-sm-8 col-md-6">
-                <div className={bem('SuccessMessage', ['alert', alertClass])}>
+                <div data-testid={'alert-body'} className={bem('SuccessMessage', ['alert', alertClass])}>
                     <h4 className="alert-heading">Well done!</h4>
                     <p>Order #<strong className={bem('Number')}>{latestOrderId}</strong> has been successfully completed.</p>
                     <hr/>

@@ -21,3 +21,7 @@ export const generateProduct = (
       material: `Test awesome material ${Math.random()}`
    };
 };
+
+export const hasClass = (element: HTMLElement, className: string) => {
+   return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
+}
