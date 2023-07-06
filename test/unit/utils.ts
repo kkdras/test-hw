@@ -1,6 +1,3 @@
-import { basename } from "path";
-import { CartApi, ExampleApi } from "../../src/client/api";
-import { addToCart, initStore } from "../../src/client/store";
 import { Product, ProductShortInfo } from "../../src/common/types";
 
 export const generateShortProduct = (): ProductShortInfo => {

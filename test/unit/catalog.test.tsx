@@ -89,5 +89,4 @@ describe('Отображение товаров на странице катал
          expect(addedLabel).not.toBeNull()
       });
    });
-
 })

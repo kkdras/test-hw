@@ -1,6 +1,7 @@
 const { assert } = require('chai');
 const { resolutions } = require('./const');
 const { hasClass } = require('./utils');
+const axios = require('axios')
 
 describe('интеграционные тесты.', async function() {
    it('после перехода по разделю мобильного меню оно должно закрыться', async function () {
@@ -28,7 +29,7 @@ describe('интеграционные тесты.', async function() {
    });
 
    it('кнопка должна быть правильного размера', async function () {
-      await this.browser.url('http://localhost:3000/hw/store/catalog/1');
+      await this.browser.url('http://localhost:3000/hw/store/catalog/0');
 
       this.browser.setWindowSize(
          resolutions.mobile.width,
@@ -39,5 +40,17 @@ describe('интеграционные тесты.', async function() {
          'compare buttons',
          '.ProductDetails-AddToCart'
       );
+   });
+
+   it('GET-запрос возвращает запись с тем же id', async function () {
+      const shortProducts = await axios.get(`http://localhost:3000/hw/store/api/products`);
+
+      const someShortProduct = shortProducts.data[shortProducts.data.length - 1];
+
+      const id = someShortProduct.id;
+
+      const fullProduct = await axios.get(`http://localhost:3000/hw/store/api/products/${id}`);
+
+      assert.equal(someShortProduct.id, fullProduct.data.id);
    });
 });
