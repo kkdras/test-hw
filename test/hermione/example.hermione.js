@@ -53,4 +53,14 @@ describe('интеграционные тесты.', async function() {
 
       assert.equal(someShortProduct.id, fullProduct.data.id);
    });
+
+   it('при GET-запросе продуктов у каждого продукта должны быть обязательные поля', async () => {
+      const shortProducts = await axios.get(`http://localhost:3000/hw/store/api/products`);
+
+      for (let shortProduct of shortProducts.data) {
+         assert.typeOf(shortProduct.name, 'string', 'Имя должно быть строкой');
+         assert.typeOf(shortProduct.id, 'number', 'Id должен быть числом');
+         assert.typeOf(shortProduct.price, 'number', 'Стоимость должна быть числом');
+      }
+   });
 });
